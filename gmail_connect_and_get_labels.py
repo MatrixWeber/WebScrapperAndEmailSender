@@ -46,3 +46,37 @@ def getCredits():
             print(label['name'])
 
     return service
+
+
+def get_sent_label_objects(service, user_id):
+    try:
+        sent = service.users().labels().get(userId=user_id, id='SENT')
+        return sent
+    except HttpError as error:
+        print('An error occurred: %s' % error)
+
+
+def list_messages(service, user_id):
+    try:
+        msgs = (service.users().messages().list(
+            userId=user_id, maxResults=5).execute())
+        return msgs
+    except HttpError as error:
+        print('An error occurred: %s' % error)
+
+
+def get_messages_object(service, user_id):
+    try:
+        msgs = service.users().messages()
+        return msgs
+    except HttpError as error:
+        print('An error occurred: %s' % error)
+
+
+def get_message(service, user_id, id):
+    try:
+        msg = (service.users().messages().get(
+            userId=user_id, id=id).execute())
+        return msg
+    except HttpError as error:
+        print('An error occurred: %s' % error)

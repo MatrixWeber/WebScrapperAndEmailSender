@@ -1,14 +1,16 @@
 from os import path
 
-def writetoFile(emailList):
-    if path.exists('./emails.txt'):
-        with open('emails.txt', 'r+') as f:
+
+def writetoFile(filename, emailSet):
+    if path.exists(filename):
+        with open(filename, 'r+') as f:
             emails = set()
             for email in f.readlines():
                 split_emails = str(email).split('\n')
-                if not split_emails[0].empty():
+                if split_emails[0]:
                     emails.add(split_emails[0])
-            emailList = emails.union(emailList)
-    for email in emailList:
-        with open('emails.txt', 'a') as f:
-            f.write(email + '\n')
+            emailSet = emails.union(emailSet)
+    with open(filename, 'w') as f:
+        for email in emailSet:
+            if email:
+                f.write(email + '\n')
