@@ -4,7 +4,7 @@ from time import sleep
 browser = webdriver.Chrome(
     '/Users/alexanderweber/Documents/GitHub/python_projects/WebScrapperAndEmailSender/chromedriver')
 
-browser.get("https://de.kompass.com/d/erlangen/de_09_09562/")
+browser.get("https://de.kompass.com/d/erlangen/de_09_09562/page-2/")
 
 sleep(1)
 elems = browser.find_elements_by_css_selector("#resultatDivId [href]")
