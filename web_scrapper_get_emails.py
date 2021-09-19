@@ -4,6 +4,7 @@ from write_email_addresses_to_file import writetoFile
 import time
 from threading import Thread
 import re
+import os
 
 start = time.time()
 
@@ -44,6 +45,11 @@ for x in threads:
 writetoFile('email_list.txt', emailSet)
 print('From ' + str(len(homepages)) +
       ' homepages got ' + str(len(emailSet)) + ' email')
+
+#if os.path.exists("homepages.txt"):
+#    os.remove("homepages.txt")
+#else:
+#    print("The " + homepage + " does not exist")
 
 end = time.time()
 print(end - start)
